@@ -1,0 +1,18 @@
+<script>
+// We generated a client token for you so you can test out this code
+// immediately. In a production-ready integration, you will need to
+// generate a client token on your server (see section below).
+var clientToken = "{{clientToken}}";
+var client = new braintree.api.Client({clientToken: "{{clientToken}}"});
+
+braintree.setup(clientToken, "custom", {
+paypal: {
+  container: "payment-form",
+},
+onPaymentMethodReceived: function (obj) {
+    console.log(obj);
+    $("#payment-form").addClass('white_form');
+    $("#payment-method-nonce").val(obj.nonce);
+}
+});
+</script>

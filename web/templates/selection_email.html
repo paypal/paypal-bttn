@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <h4 style="text-align: left;">You've pushed our button! Please click on the item that interests you.</h4>
+
+{% for mitem in options %}
+<ul style="clear: left;list-style: none;padding-left: 0;">
+    <li>
+    {%if mitem.image|length > 0 %}
+    <img style='float:left;width:100px;height:54px;margin-left:5px;margin-right:5px;margin-bottom:3px' src="../{{mitem.image}}" class="img-responsive" alt="">
+    {% else %}
+        <img style='width:100px;height:54px;margin-left:5px;margin-right:5px;margin-bottom:3px' src="img/scoop_icon.png" class="pull-left img-responsive" alt="">
+    {% endif %}
+    </li>
+    <li class="cart-item-title"><a href="{{mitem.link}}">{{ mitem.title }}</a></li>
+    {% if mitem.cost|length > 0 %}
+    <li>${{ mitem.cost }}</li>
+    {% endif %}
+</ul>
+{% endfor %}
+
+</body>
+
+</html>

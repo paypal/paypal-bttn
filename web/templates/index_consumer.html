@@ -1,0 +1,115 @@
+{% include 'index_header.html' with {'type':'consumer'} %}
+
+<section class="bg-primary-consumer" id="buy">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2 class="section-heading text-center">Buy something</h2>
+                <hr class="light">
+                <p class="text-faded text-center">In order to use our button, you need to buy something. This will created a "vaulted user" on the merchant system.  This vaulted user will then be associated with the button.</p>
+
+                <form id="checkout">
+                <div class="col-lg-6 col-lg-offset-3">
+                <h3 class="text-faded text-center">Shopping Cart ${{total}}</h3>
+                <ul class="list-group">
+                {% for mitem in cart %}
+                      <li class="list-group-item">
+                        <h4 class="list-group-item-heading">{{ mitem.title }}</h4>
+                        <span class="badge">${{ mitem.cost }}</span>
+                        <img width="100" src="{{mitem.image}}" class="img-responsive" alt="">
+                        <input type="hidden" name="items[]" value="{{mitem.id}}" />
+                      </li>
+                {% endfor %}
+                </ul>
+                </div>
+
+                <div class="row">
+                  <div class="form-group">
+                      <input type="text" name="email" class="form-control" placeholder="Email Address">
+                      <input type="text" name="firstName" class="form-control" placeholder="First Name">
+                      <input type="text" name="lastName" class="form-control" placeholder="Last Name">
+                      <input type="text" name="phone" class="form-control" placeholder="Phone">
+                      <input type="hidden" name="amount" class="form-control" placeholder="Amount" value="{{total}}">
+                      <input type="hidden" name="payment_method_nonce" id="payment-method-nonce" />
+                      <input type="hidden" name="charge_type" id="charge-type" />
+                  </div>
+
+                  <p class="text-faded text-left">Payment Details: Accept either PayPal or Credit Card</p>
+
+
+                  <div class="row col-lg-12">
+                    <div class="row col-lg-5" id="payment-form"></div>
+                    <div class="row col-lg-1"></div>
+                    <div class="row col-lg-6">
+                      <input type="text" name="cc_num" class="form-control" placeholder="Credit Card Number">
+                      <div class="row col-lg-4"><input type="text" name="cc_exp" class="form-control" placeholder="Exp"></div>
+                      <div class="row col-lg-4"><input type="text" name="cc_cvv" class="form-control" placeholder="CVV"></div>
+                      <div class="row col-lg-5"><input type="text" name="cc_postal" class="form-control" placeholder="Postal Code"></div>
+                      <button type="button" onclick="ga('send', 'event', 'populate_fake_cc', 'button', 'click');" class="btn btn-primary btn-sm" name="cc1_test">Populate Fake CC</button>
+                    </div>
+                  </div>
+
+                  <input type="hidden" name="function" value="PURCHASE"/>
+                    <div class="row col-lg-8">
+                      <br/>
+                      <button onclick="ga('send', 'event', 'pay_button', 'button', 'click');" id="pay_button" type="button" class="text-left btn btn-success btn-xl">Pay</button>
+                      <img id="checkout_wait" src="img/spinner.gif" width="80" style="display:none"/>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-dark-consumer" id="lookup_orders">
+   <div class="container">
+       <div class="row">
+           <div class="col-lg-8 col-lg-offset-2 text-center">
+               <h2 class="section-heading">(Optional) Request a shiny new button!</h2>
+               <hr class="light">
+               <p class="text-faded">Want to try out our new button, great! We verify that you've bought something from us, then update our database with your request.</p>
+               <form id="request_form">
+               <div class="form-group">
+                   <input type="text" name="email" class="form-control" placeholder="Email Address">
+                   <input type="hidden" name="function" value="REQUEST"/>
+               </div>
+
+               <div class="form-group">
+               <button onclick="ga('send', 'event', 'request_button', 'button', 'click');" id="request_button" type="button" class="btn btn-default btn-xl">Request My Button</button>
+               <img id="request_form_wait" src="img/spinner.gif" width="80" style="display:none"/>
+               <div class="error_msg" id="request_form_error"></div>
+               </form>
+           </div>
+       </div>
+   </div>
+</section>
+
+
+<section class="bg-primary-consumer" id="wait">
+   <div class="container">
+       <div class="row">
+           <div class="col-lg-8 col-lg-offset-2 text-center">
+
+               <h2 class="section-heading">Wait to receive your button</h2>
+               <hr class="light">
+               <p class="text-faded">The most difficult part in the process.</p>
+               </form>
+           </div>
+       </div>
+   </div>
+</section>
+
+<section class="bg-dark-consumer" id="use">
+   <div class="container">
+       <div class="row">
+           <div class="col-lg-8 col-lg-offset-2 text-center">
+
+               <h2 class="section-heading">Use your button!</h2>
+               <hr class="light">
+               <iframe width="400" height="300" src="https://www.youtube.com/embed/ALVV1VwkCC8" frameborder="0" allowfullscreen></iframe>
+               </form>
+           </div>
+       </div>
+   </div>
+</section>

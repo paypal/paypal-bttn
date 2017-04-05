@@ -1,0 +1,11 @@
+{
+   "require": {        
+        "braintree/braintree_php" : "3.22.0",
+        "sergeytsalkov/meekrodb": "2.3",
+        "twig/twig":"1.32.0",
+        "phpmailer/phpmailer": "5.2.22"
+    },
+    "require-dev": {
+      "heroku/heroku-buildpack-php": "*"
+  }
+}

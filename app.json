@@ -1,0 +1,48 @@
+{
+  "name": "PayPal bttn for Commerce Demo",
+  "description": "A super-cool implementation of bttn and Braintree APIs that allow for you to buy something at the push of a bttn!",
+  "repository": "https://github.com/paypal/paypal-bttn",
+  "logo": "https://raw.githubusercontent.com/paypal/paypal-bttn/master/web/img/PayPal_bttn.png",
+  "keywords": ["paypal", "bttn"],
+  "env": {
+    "braintree_environment": {
+      "description": "Braintree - Should be either Sandbox or Production",
+      "value": "sandbox"
+    },
+    "braintree_merchantId": {
+      "description": "Braintree - The merchantId for your account",
+      "value": ""
+    },
+    "braintree_privateKey": {
+      "description": "Braintree - The private key for your account",
+      "value": ""
+    },
+    "braintree_publicKey": {
+      "description": "Braintree - The public key for your account",
+      "value": ""
+    },
+    "BT_CHANNEL_NAME": {
+      "description": "Braintree - An API value that is used to keep track of the channel that a transaction came from",
+      "value": ""
+    },
+    "BTTN_API_KEY": {
+      "description": "BTTN - The API key provided by bttn",
+      "value": ""
+    },
+    "BTTN_API_MERCHANT_NAME": {
+      "description": "BTTN - The merchant name provided by bttn",
+      "value": ""
+    },
+    "SLACK_ENABLE": {
+      "description": "Slack - Enable Slack notifications for user actions",
+      "value": "",
+      "required": "false"
+    },
+    "SLACK_URL": {
+      "description": "Slack - The webhook URL to use",
+      "value": "",
+      "required": "false"
+    }
+  }
+}
+

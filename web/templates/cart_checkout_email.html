@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+{% if error|length > 0 %}
+    There was an error processing your transaction.
+
+    {% if message|length > 0 %}
+    <b>{{message}}</b>
+    {% endif %}
+
+{% else %}
+    <h4 style="text-align: left;">Thank you for your order!</h4>
+
+     {% for mitem in items %}
+        {% if mitem.cost|length > 0 %}
+            <ul style="clear: left;list-style: none;padding-left: 0;">
+                <li>
+                  <img style='float:left;width:70px;height:50px;margin-left:5px;margin-right:5px;margin-bottom:3px' src="../{{mitem.image}}" class="img-responsive" alt="">
+                </li>
+
+                <li class="cart-item-title">{{ mitem.title }}</li>
+                <li>${{ mitem.cost }}</li>
+            </ul>
+        {% endif %}
+    {% endfor %}
+    <p style="text-align: left;">
+        <b>Total:</b> ${{total}}
+    </p>
+
+    <b>Order Number:</b> {{bt_details.transaction.id}}
+
+    <h4>Customer Details</h4>
+    <ul style="list-style: none;padding-left: 0;">
+      <li><b>Name:</b> {{bt_details.transaction.customer.firstName}} {{bt_details.transaction.customer.lastName}}</li>
+      <li><b>Phone:</b> {{bt_details.transaction.customer.phone}}</li>
+      <li><b>Email:</b> {{bt_details.transaction.customer.email}}</li>
+      {% if bt_details.transaction._attributes.creditCard.last4 != null %}
+        <li><b>Credit Card Last 4:</b> {{bt_details.transaction._attributes.creditCard.last4}}</li>
+      {%endif%}
+      {% if bt_details.transaction._attributes.paypal.payerEmail != null %}
+        <li><b>PayPal Email:</b> {{bt_details.transaction._attributes.paypal.payerEmail}}</li>
+      {%endif%}
+    </ul>
+
+    {% for key, value in bt_details.transaction.customFields  %}
+      {% if key == "cart_detail_text" %}
+        <i>{{value}}</i>
+      {% endif %}
+    {% endfor %}
+
+
+{% endif %}
+
+</body>
+
+</html>

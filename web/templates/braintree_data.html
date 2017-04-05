@@ -1,0 +1,33 @@
+{% if users | length > 0 %}
+<div class="row text-center text-faded">
+  <div class="col-lg-5"><h4>Email</h4></div>
+  <div class="col-lg-3 text-center"><h4>Status</h4></div>
+  <div class="col-lg-2 text-center"><h4>Customer ID</h4></div>
+  <div class="col-lg-2 text-center"><h4>Charge</h4></div>
+</div>
+
+<form id="admin_list_users">
+{% for user in users %}
+  <div class="row text-center form-group">
+    <div class="col-lg-5">{{user.email | slice(0,2)}}...{{user.email | slice(4,4)}}...</div>    
+
+    <div class="col-lg-3 text-center {% if user.consumer_stage == 'ACTIVE' %}btn-success{%elseif user.consumer_stage == 'UNREGISTERED'%}btn-default{%endif%}">
+      {{user.consumer_stage}}
+      {% if user.consumer_stage == 'ONBOARDED' %} <em>send them a button</em> {%endif%}
+      {% if user.consumer_stage == 'UNREGISTERED' %} <em>assign a button to them</em> {%endif%}
+    </div>
+    <div class="col-lg-2 text-center">{{user.customer_id}}</div>
+    <input type="hidden" name="customer_id[]" value="{{user.customer_id}}"/>
+    <div class="col-lg-2 col-md-1"><input class="form-control input-sm" type="text" name="charge_amount[]" value="{{user.amount_to_charge}}"/></div>
+  </div>
+{% endfor %}
+<input type="hidden" name="function" value="SAVE_USER"/>
+<button onclick="handleFormSubmission('#admin_list_users');ga('send', 'event', 'save_user_button', 'button', 'click');" type="button" class="btn btn-lg btn-default" id="save_user_button">Save</button>
+<img id="admin_list_users_wait" src="img/spinner.gif" width="80" style="display:none"/>
+<div class="error_msg" id="admin_list_users_error"></div>
+</form>
+<div class="text-faded">Charge Options: Fixed price (e.g. 12.12), Re-order (reorder), Selection (selection)</div>
+{% else %}
+<div class="col-md-12 text-center">No users yet!</div>
+<div class="col-md-12 text-center">To get into the database, the admin needs to <a href="#register">register a button</a> or a user <a href="index.php#lookup_orders">can request a button</a>.</div>
+{% endif %}

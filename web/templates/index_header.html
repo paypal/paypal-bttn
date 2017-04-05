@@ -1,0 +1,100 @@
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-78521118-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="#page-top">Truc: Buy Stuff Online</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                {% if type == 'consumer' %}
+                <li>
+                    <a class="page-scroll" onclick="ga('send', 'event', 'buy', 'nav_button', 'click');" href="#buy">Buy</a>
+                </li>
+                <li>
+                    <a class="page-scroll" onclick="ga('send', 'event', 'lookup_orders', 'nav_button', 'click');" href="#lookup_orders">Request</a>
+                </li>
+                <li>
+                    <a class="page-scroll" onclick="ga('send', 'event', 'use', 'nav_button', 'click');" href="#use">Use</a>
+                </li>
+                {% endif %}
+
+
+                {% if type == 'merchant' %}
+                <li>
+                    <a class="page-scroll" onclick="ga('send', 'event', 'admin', 'nav_button', 'click');" href="#admin">Admin</a>
+                </li>
+                <li>
+                    <a class="page-scroll" onclick="ga('send', 'event', 'register', 'nav_button', 'click');" href="#register">Register</a>
+                </li>
+                <li>
+                    <a class="page-scroll" onclick="ga('send', 'event', 'unregister', 'nav_button', 'click');" href="#unregister">Unregister</a>
+                </li>
+                {% endif %}
+
+                <li>
+                    <a class="page-scroll" onclick="ga('send', 'event', 'contact', 'nav_button', 'click');" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+
+<header>
+    <div class="header-content">
+        <div class="header-content-inner">
+            <h1>Welcome to the Truc Button Page!</h1>
+            <hr>
+            <p class="text-muted"><i>This is a demo website that is intended to demonstrate how to use a button for commerce.</i> <b>This is not a real website.</b></p>
+
+            <p>Click the buttons below to get started.</p>
+
+            <div class="panel panel-primary">
+              <div class="panel-heading"><h3 class="panel-title">Buyer</h3></div>
+              <div class="panel-body">
+                {% if type == 'consumer' %}
+                <a href="#buy" onclick="ga('send', 'event', 'buy', 'button', 'click');" class="btn btn-primary btn-xl page-scroll">1. Buy something</a>
+                <a href="#lookup_orders" onclick="ga('send', 'event', 'lookup', 'button', 'click');" class="btn btn-primary btn-xl page-scroll">2. Request a button</a>
+                {% endif %}
+
+                {% if type == 'merchant' %}
+                <a href="index.php" onclick="ga('send', 'event', 'switch_to_buyer', 'button', 'click');" class="btn btn-primary btn-xl page-scroll">Switch to Buyer Mode</a>
+                {% endif %}
+              </div>
+            </div>
+
+            <div class="panel panel-success">
+              <div class="panel-heading"><h3 class="panel-title">Merchant</h3></div>
+              <div class="panel-body">
+                {% if type == 'consumer' %}
+                <a href="?merchant" onclick="ga('send', 'event', 'switch_to_admin', 'button', 'click');" class="btn btn-primary btn-xl page-scroll">Switch to Admin Mode</a>
+                {% endif %}
+                {% if type == 'merchant' %}
+                <a href="#register" onclick="ga('send', 'event', 'register', 'button', 'click');" class="btn btn-primary btn-xl page-scroll">1. Register a button</a>
+                <a href="#unregister" onclick="ga('send', 'event', 'unregister', 'button', 'click');" class="btn btn-primary btn-xl page-scroll">2. Unregister a button</a>
+                {% endif %}
+              </div>
+            </div>
+        </div>
+    </div>
+</header>

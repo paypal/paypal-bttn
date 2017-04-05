@@ -1,0 +1,11 @@
+<ul>
+  {% for bttn in button_data %}
+  <li>Button Code: {{bttn.code|slice(0,10) }}XXXX-XXXX {% if is_local %}<button class="btn btn-sm btn-primary" onclick="releaseButton('{{bttn.associd}}');">unregister button</button>{% endif %}</li>
+  <ul>
+    <li>Association ID: {{bttn.associd}}</li>
+    <li>Braintree ID: {{bttn.data.pressed.http.json.bt_id}}</li>
+    <li>Charge Type: {{bttn.data.pressed.http.json.charge_type}}</li>
+    <li>URL: {{bttn.data.pressed.http.url}}</li>
+  </ul>
+  {% endfor %}
+</ul>

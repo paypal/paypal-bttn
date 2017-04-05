@@ -1,0 +1,88 @@
+{% include 'index_header.html' with {'type':'merchant'} %}
+
+
+<section class="bg-admin" id="admin">
+   <div class="container">
+       <div class="row">
+           <div class="col-lg-8 col-lg-offset-2">
+               <h2 class="section-heading text-center">Admin</h2>
+               <hr class="light"/>
+
+              <div class="row">
+              <h3 class="section-heading text-center">Braintree data</h3>
+              <div class="text-center">
+                <button onclick="showBraintreeData();" class="btn btn-info">Show Braintree data</button></a>&nbsp;
+                <img id="braintree_data_wait" src="img/spinner.gif" width="80" style="display:none"/>
+              </div>
+              <div style="margin-top:10px" class="row" id="braintree_data"></div>
+            </div>
+
+            <hr class="light"/>
+
+            <div class="row">
+              <h3 class="section-heading text-center">bttn data</h3>
+              <div class="text-center">Curious what the data looks like on the bttn servers?</div>
+              <div class="text-center">
+                <button onclick="showBttnData();" class="btn btn-info">Show bttn data</button></a>&nbsp;
+                <img id="bttn_data_wait" src="img/spinner.gif" width="80" style="display:none"/>
+              </div>
+              <div style="margin-top:10px" class="row" id="bttn_data"></div>
+           </div>
+
+
+           </div>
+       </div>
+   </div>
+</section>
+
+
+<section class="bg-primary" id="register">
+   <div class="container">
+       <div class="row">
+           <div class="col-lg-8 col-lg-offset-2 text-center">
+               <h2 class="section-heading">Register a button</h2>
+               <hr class="light">
+               <p class="text-faded">This can be done by the merchant (recommended) or consumer. Ideally the merchant would do this to remove friction for the consumer.</p>
+               <form id="registration_form">
+               <div class="form-group">
+                   <input type="text" name="code" class="form-control" placeholder="Button Code (e.g. 1234-ABCD-1234-ABCD)">
+                   <input type="text" name="email" class="form-control" placeholder="Email address associated with customer's Braintree account">
+                   <input type="hidden" name="function" value="REGISTER"/>
+               </div>
+                   <img  style="margin-bottom:10px" src="img/IMG_20160421_113744.png" width="500"/>
+               <div class="form-group">
+               <button onclick="ga('send', 'event', 'registration_button', 'button', 'click');" id="registration_button" type="button" class="btn btn-default btn-xl">Let's Go!</button>
+               <img id="registration_form_wait" src="img/spinner.gif" width="80" style="display:none"/>
+               <div class="error_msg" id="registration_form_error"></div>
+               </form>
+               </div>
+
+           </div>
+       </div>
+   </div>
+</section>
+
+<section class="bg-dark" id="unregister">
+   <div class="container">
+       <div class="row">
+           <div class="col-lg-8 col-lg-offset-2 text-center">
+               <h2 class="section-heading">Unregister a button</h2>
+               <hr class="light">
+               <p class="text-faded">Give us a Braintree-vaulted email address and we'll do the rest.  This calls the Braintree to retrieve the button code for a given email address, then calls a bttn API to release the button for this consumer.</p>
+               <form id="release_form">
+               <div class="form-group">
+                   <input type="text" name="email" class="form-control" placeholder="Email address associated with customer's Braintree account">
+                   <input type="hidden" name="function" value="RELEASE"/>
+               </div>
+
+               <div class="form-group">
+               <button onclick="ga('send', 'event', 'release_button', 'button', 'click');" id="release_button" type="button" class="btn btn-default btn-xl">Unregister :(</button>
+               <img id="release_form_wait" src="img/spinner.gif" width="80" style="display:none"/>
+               <div class="error_msg" id="release_form_error"></div>
+               </form>
+               </div>
+
+           </div>
+       </div>
+   </div>
+</section>
