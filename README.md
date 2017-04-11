@@ -8,20 +8,20 @@ Demo site for PayPal/bt.tn: https://ppbttn.herokuapp.com/
 ## bt.tn
 1. [Purchase a bttn](https://bt.tn/shop/) and fill out [this form](https://docs.google.com/forms/d/e/1FAIpQLSduzTRXBxVta8gstoG37mIWVPyL7sXdbDso3jxPpJZrYOFUJQ/viewform) to enable the beta PayPal integration.  You will receive an email from bttn with your `BTTN_API_KEY` and `BTTN_API_MERCHANT_NAME`. Update `config.php` with these details.
 1. When you receive your button, [register it](https://my.bt.tn/register).
-1. [Login](https://my.bt.tn/) and select *action* for your bttn.
+2. [Login](https://my.bt.tn/) and select *action* for your bttn.
 
-  ![set action](web/img/bttn_set_action.png)
-
-1. Select *new action*.
+ ![set action](web/img/bttn_set_action.png)
+ 
+3. Select *new action*.
 
   ![new action selection](web/img/bttn_new_action_selection.png)
 
-1. Select "pressed" for "EXECUTE ACTION IF BTTN IS".
-1. Select "PayPal bttn for commerce" as the action.
+4. Select "pressed" for "EXECUTE ACTION IF BTTN IS".
+5. Select "PayPal bttn for commerce" as the action.
 
   ![new action](web/img/bttn_new_action.png)
 
-1. Select the "save" button.
+6. Select the "save" button.
 
 
 # Braintree
