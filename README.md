@@ -41,6 +41,10 @@ You will need to setup the following [`customFields`](https://articles.braintree
 
 2. `bttn_code` - The code of the button associated to the user.
 
+3. `cart_details` - Records unique product identifiers for the items purchased in a comma-delimited format.
+
+4. `cart_detail_text` - Records the type of transaction this is: website purchase, bttn reorder, bttn fixed price, bttn selection.
+
 ![Braintree Custom Fields](web/img/braintree_customer_vault_screenshot.png)
 
 
